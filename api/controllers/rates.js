@@ -3,7 +3,7 @@ const Rates = require('../models/rates');
 
 //Get rates
 exports.get_rates = (req, res, next) => {
-    id ="5ede1d0434c8e4192cc45222";
+    id ="5f12c185e1b005f6656aca78";
     Rates.findById(id)
         .exec()
         .then(docs => {
@@ -64,7 +64,7 @@ exports.add_rates = (req, res, next) => {
 }
 exports.update_rates = (req, res, next) => {
 
-    const id = "5ede1d0434c8e4192cc45222";
+    const id = "5f12c185e1b005f6656aca78";
     //console.log("faf", req.body);
     const updateOps = {};
     // for (const ops in req.body) {
