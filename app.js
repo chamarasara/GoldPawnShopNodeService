@@ -10,7 +10,7 @@ const ratesRoutes = require('./api/routes/rates');
 const userActivities = require('./api/routes/useractivity')
 const dailyReports = require('./api/routes/daily_report')
 
-mongoose.connect('mongodb+srv://chamara:123@intel.@cluster0.ed3li.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://chamara:123@intel.@cluster0.ed3li.mongodb.net/gold_shop?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true 
 });
