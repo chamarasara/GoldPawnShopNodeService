@@ -1,6 +1,7 @@
 {
     "env":{
         "MONGO_ATLAS_PW": "casperbuster",
-        "JWT_KEY": "secret"
+        "JWT_KEY": "secret",
+        "MONGO_URL": "mongodb+srv://chamara:123intel@cluster0.ed3li.mongodb.net/gold_shop?retryWrites=true&w=majority"
     }
 }
