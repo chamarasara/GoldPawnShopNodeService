@@ -16,6 +16,7 @@ const articleSchema = mongoose.Schema({
     duration: { type: String },
     addtional_details: { type: String },
     interest_paid: { type: Number, default: 0 },
+    interestPaidDate: { type: String },
     speacial_circumstances: { type: String, default: " - " },
     released_date: { type: String, default: "-" },
     released_amount: { type: Number, default: 0 },

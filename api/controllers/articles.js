@@ -40,6 +40,7 @@ exports.articles_add_new = (req, res, next) => {
                     duration: req.body.duration,
                     addtional_details: req.body.addtional_details,
                     interest_paid: req.body.interest_paid,
+                    interestPaidDate: req.body.interestPaidDate,
                     speacial_circumstances: req.body.speacial_circumstances,
                     released_date: req.body.released_date,
                     released_amount: req.body.released_amount,
