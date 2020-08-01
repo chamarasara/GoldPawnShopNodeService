@@ -8,70 +8,71 @@ const _ = require('lodash');
 //add new article
 exports.articles_add_new = (req, res, next) => {
     //console.log("***************lll", req.body);
-    Articles.find({articleId: req.body.articleId})
-    .exec()
-    if (articles.length >= 1) {
-        return res.status(409).json({
-            message: "Username exists"
-        });
-    } else {
-        releasedFinalDate = '';
-        var additional_amount = 0;
-        var total_amount = 0;
-        var amount = req.body.amount
-        var converted_amount = parseInt(amount, 10)
-        getTotalAmount(converted_amount, additional_amount)
-        releasedfinaldate(req.body.color);
-        //console.log(req.body.speacial_circumstances)
-        const articles = new Articles({
-            userId: req.body.userId,
-            articleId: req.body.article_number,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            address: req.body.address,
-            id_number: req.body.id_number,
-            phone_number: req.body.phone_number,
-            amount: req.body.amount,
-            additional_amount: 0,
-            total_amount: total_amount,
-            weight: req.body.weight,
-            duration: req.body.duration,
-            addtional_details: req.body.addtional_details,
-            interest_paid: req.body.interest_paid,
-            speacial_circumstances: req.body.speacial_circumstances,
-            released_date: req.body.released_date,
-            released_amount: req.body.released_amount,
-            color: req.body.color,
-            date: moment().format('DD/MM/YYYY, h:mm:ss a'),
-            released_final_date: releasedFinalDate,
-            article_status: "Active",
-            previous_article_id: req.body.previous_article
-        });
-        function getTotalAmount(amount, additional_amount) {
-            total_amount = amount + additional_amount;
-            console.log("Total amount", total_amount)
-            return total_amount;
-        }
-        function releasedfinaldate(color) {
-            const oneyear = moment().add(395, 'days').calendar();
-            const threemonths = moment().add(105, 'days').calendar();
-            if (color == 1 || color == 2) {
-                this.releasedFinalDate = oneyear
-            } else if (color == 3) {
-                this.releasedFinalDate = threemonths
+    Articles.find({ articleId: req.body.articleId })
+        .exec()
+        .then(users => {
+            if (articles.length >= 1) {
+                return res.status(409).json({
+                    message: "Username exists"
+                });
+            } else {
+                releasedFinalDate = '';
+                var additional_amount = 0;
+                var total_amount = 0;
+                var amount = req.body.amount
+                var converted_amount = parseInt(amount, 10)
+                getTotalAmount(converted_amount, additional_amount)
+                releasedfinaldate(req.body.color);
+                //console.log(req.body.speacial_circumstances)
+                const articles = new Articles({
+                    userId: req.body.userId,
+                    articleId: req.body.article_number,
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    address: req.body.address,
+                    id_number: req.body.id_number,
+                    phone_number: req.body.phone_number,
+                    amount: req.body.amount,
+                    additional_amount: 0,
+                    total_amount: total_amount,
+                    weight: req.body.weight,
+                    duration: req.body.duration,
+                    addtional_details: req.body.addtional_details,
+                    interest_paid: req.body.interest_paid,
+                    speacial_circumstances: req.body.speacial_circumstances,
+                    released_date: req.body.released_date,
+                    released_amount: req.body.released_amount,
+                    color: req.body.color,
+                    date: moment().format('DD/MM/YYYY, h:mm:ss a'),
+                    released_final_date: releasedFinalDate,
+                    article_status: "Active",
+                    previous_article_id: req.body.previous_article
+                });
+                function getTotalAmount(amount, additional_amount) {
+                    total_amount = amount + additional_amount;
+                    console.log("Total amount", total_amount)
+                    return total_amount;
+                }
+                function releasedfinaldate(color) {
+                    const oneyear = moment().add(395, 'days').calendar();
+                    const threemonths = moment().add(105, 'days').calendar();
+                    if (color == 1 || color == 2) {
+                        this.releasedFinalDate = oneyear
+                    } else if (color == 3) {
+                        this.releasedFinalDate = threemonths
+                    }
+                }
+                articles.save()
+                    .then(result => {
+                        console.log(result);
+                    })
+                    .catch(err => console.log(err));
+                res.status(200).json({
+                    message: 'New Article successfully created.',
+                    createdArticle: articles
+                });
             }
-        }
-        articles.save()
-            .then(result => {
-                console.log(result);
-            })
-            .catch(err => console.log(err));
-        res.status(200).json({
-            message: 'New Article successfully created.',
-            createdArticle: articles
         });
-    }
-    
 }
 
 //get all articles
@@ -107,7 +108,7 @@ exports.articles_get_one = (req, res, next) => {
             });
         })
 }
-    
+
 //update article
 exports.update_article = (req, res, next) => {
 
@@ -115,9 +116,9 @@ exports.update_article = (req, res, next) => {
     console.log("faf", req.body);
     const updateOps = {};
 
-    if (req.body.article_status == "Released"){
+    if (req.body.article_status == "Released") {
         console.log("********test************")
-        Articles.update({ _id: id }, { $set: { released_date: moment().format('MM/DD/YYYY'), article_status:"Released" } })
+        Articles.update({ _id: id }, { $set: { released_date: moment().format('MM/DD/YYYY'), article_status: "Released" } })
             .exec()
             .then(result => {
                 res.status(200).json(result);
@@ -129,7 +130,7 @@ exports.update_article = (req, res, next) => {
                 });
             });
     }
-    else{
+    else {
 
         for (const ops in req.body) {
             updateOps[ops.propName] = ops.value;
@@ -201,7 +202,7 @@ exports.delete_article = (req, res, next) => {
 //search article
 exports.search_article = (req, res, next) => {
     const searchQuery = {}
-    console.log("req",req.body)
+    console.log("req", req.body)
     const searchText = req.body.searchText;
     const startDate = req.body.startDate;
     const endDate = req.body.endDate;
@@ -214,8 +215,8 @@ exports.search_article = (req, res, next) => {
     }
 
     if (startDate != null && endDate != null) {
-       var dateQuery = {
-            createdAt: {$gt: startDate, $lt: endDate}
+        var dateQuery = {
+            createdAt: { $gt: startDate, $lt: endDate }
         }
         _.assign(searchQuery, dateQuery);
     }
