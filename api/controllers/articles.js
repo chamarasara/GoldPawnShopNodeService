@@ -12,9 +12,9 @@ exports.articles_add_new = (req, res, next) => {
         .exec()
         .then(articles => {
             console.log(articles)
-            if (articles.length >= 1) {
+            if (articles.length) {
                 return res.status(409).json({
-                    message: "Username exists"
+                    message: "Article Number Already Exists"
                 });
             } else {
                 releasedFinalDate = '';
