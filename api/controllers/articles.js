@@ -36,6 +36,7 @@ exports.articles_add_new = (req, res, next) => {
                     amount: req.body.amount,
                     additional_amount: 0,
                     total_amount: total_amount,
+                    amountChangedDate: req.body.amountChangedDate,
                     weight: req.body.weight,
                     duration: req.body.duration,
                     addtional_details: req.body.addtional_details,

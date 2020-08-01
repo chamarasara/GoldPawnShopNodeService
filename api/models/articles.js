@@ -11,6 +11,7 @@ const articleSchema = mongoose.Schema({
     phone_number: { type: Number },
     amount: { type: Number },
     additional_amount: { type: Number },
+    amountChangedDate : { type: String},
     total_amount: { type: Number },
     weight: { type: Number },
     duration: { type: String },
