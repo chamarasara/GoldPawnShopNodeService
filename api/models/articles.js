@@ -28,7 +28,8 @@ const articleSchema = mongoose.Schema({
     article_status: { type: String, default: "Active" },
     previous_article_id: {type: String,default: "-"},
     interest: { type: String},
-    reNewDate : { type: String }
+    reNewDate : { type: String },
+    additional_charges : { type: Number}
 },
     {
         timestamps: true

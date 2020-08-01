@@ -50,7 +50,8 @@ exports.articles_add_new = (req, res, next) => {
                     released_final_date: releasedFinalDate,
                     article_status: "Active",
                     previous_article_id: req.body.previous_article,
-                    reNewDate: req.body.reNewDate
+                    reNewDate: req.body.reNewDate,
+                    additional_charges: req.body.additional_charges
                 });
                 function getTotalAmount(amount, additional_amount) {
                     total_amount = amount + additional_amount;
