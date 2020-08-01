@@ -35,36 +35,6 @@ exports.user_signup = (req, res, next) => {
                             error: err
                         });
                     });
-                // bcrypt.hash(req.body.password, 10, (err, hash) => {
-                //     if (err) {
-                //         return res.status(500).json({
-                //             error: err
-                //         });
-                //     } else {
-                //         const users = new Users({
-                //             //articleId: new mongoose.Types.ObjectId(),
-                //             _id: req.body._id,
-                //             first_name: req.body.first_name,
-                //             last_name: req.body.last_name,
-                //             user_name: req.body.user_name,
-                //             password: hash,
-                //             user_role: req.body.user_role
-                //         });
-                //         users.save()
-                //             .then(result => {
-                //                 console.log(result);
-                //                 res.status(201).json({
-                //                     message: 'New user created !'
-                //                 });
-                //             })
-                //             .catch(err => {
-                //                 console.log(err);
-                //                 res.status(500).json({
-                //                     error: err
-                //                 });
-                //             });
-                //     }
-                // })
             }
         });
 
