@@ -11,6 +11,7 @@ exports.articles_add_new = (req, res, next) => {
     Articles.find({ articleId: req.body.articleId })
         .exec()
         .then(articles => {
+            console.log(articles)
             if (articles.length >= 1) {
                 return res.status(409).json({
                     message: "Username exists"
