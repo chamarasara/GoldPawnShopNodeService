@@ -49,7 +49,8 @@ exports.articles_add_new = (req, res, next) => {
                     date: moment().format('DD/MM/YYYY, h:mm:ss a'),
                     released_final_date: releasedFinalDate,
                     article_status: "Active",
-                    previous_article_id: req.body.previous_article
+                    previous_article_id: req.body.previous_article,
+                    reNewDate: req.body.reNewDate
                 });
                 function getTotalAmount(amount, additional_amount) {
                     total_amount = amount + additional_amount;

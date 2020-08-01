@@ -27,7 +27,8 @@ const articleSchema = mongoose.Schema({
     final_date: { type: String },
     article_status: { type: String, default: "Active" },
     previous_article_id: {type: String,default: "-"},
-    interest: { type: String}
+    interest: { type: String},
+    reNewDate : { type: String }
 },
     {
         timestamps: true
