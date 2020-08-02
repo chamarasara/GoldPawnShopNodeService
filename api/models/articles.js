@@ -29,7 +29,7 @@ const articleSchema = mongoose.Schema({
     previous_article_id: {type: String,default: "-"},
     interest: { type: String},
     reNewDate : { type: String },
-    additional_charges : { type: Number}
+    additional_charges: { type: Number, default: 0 }
 },
     {
         timestamps: true
