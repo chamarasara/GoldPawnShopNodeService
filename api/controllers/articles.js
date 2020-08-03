@@ -28,7 +28,7 @@ exports.articles_add_new = (req, res, next) => {
                 //console.log(req.body.speacial_circumstances)
                 const articles = new Articles({
                     userId: req.body.userId,
-                    articleId: req.body.article_number,
+                    articleId: req.body.articleId,
                     first_name: req.body.first_name,
                     last_name: req.body.last_name,
                     address: req.body.address,

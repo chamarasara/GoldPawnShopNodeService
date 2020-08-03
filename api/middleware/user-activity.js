@@ -6,7 +6,7 @@ exports.create_records = (req, res, next) => {
     const userActivitySchema = new UserActivity({
         _id: new mongoose.Types.ObjectId(),
         user: req.body.userId,
-        articleId: req.body.article_number,
+        articleId: req.body.articleId,
         phone_number: req.body.phone_number,
         amount: req.body.amount,
         additional_amount: req.body.additional_amount,

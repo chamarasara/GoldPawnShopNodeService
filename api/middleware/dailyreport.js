@@ -6,7 +6,7 @@ exports.daily_report = (req, res, next) => {
     const DailyReportSchema = new DailyReport({
         _id: new mongoose.Types.ObjectId(),
         user: req.body.userId,
-        articleId: req.body.article_number,
+        articleId: req.body.articleId,
         amount: req.body.amount,
         additional_amount: req.body.additional_amount,
         interest_paid: req.body.interest_paid,
