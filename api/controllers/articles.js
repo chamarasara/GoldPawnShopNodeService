@@ -24,6 +24,7 @@ exports.articles_add_new = (req, res, next) => {
                 var converted_amount = parseInt(amount, 10)
                 getTotalAmount(converted_amount, additional_amount)
                 releasedfinaldate(req.body.color);
+                console.log(req.body.articleId)
                 //console.log(req.body.speacial_circumstances)
                 const articles = new Articles({
                     userId: req.body.userId,
